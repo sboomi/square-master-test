@@ -1,8 +1,22 @@
+  language: python
+  python:
+    - "3.8"
+  sudo: required
+
+  services:
+    - docker
+
+  before_install:
+    - echo 'bar'
+
+  script:
+    - echo 'foo'
+
   deploy:
     provider: heroku
-    api_key:
-      secure: "4fc5500e-1246-4e72-abc0-0fd959416900"
-    app: square-master-test
+    api_key: $HEROKU_TOKEN
+    app : the-app-to-tangram
+    skip_cleanup: True
   
   # language: python
   
