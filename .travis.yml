@@ -1,6 +1,7 @@
   language: python
   python:
     - "3.8"
+    - "3.7"
   sudo: required
 
   services:
@@ -15,7 +16,7 @@
   deploy:
     provider: heroku
     api_key: $HEROKU_TOKEN
-    app : the-app-to-tangram
+    app : square-master-test
     skip_cleanup: True
   
   # language: python
