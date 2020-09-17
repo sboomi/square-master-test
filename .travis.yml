@@ -1,20 +1,26 @@
-  language: python
-  
-  services:
-    - docker
-  
-  before_install:
-    - echo 'test'
-    - wget -q0- https://toolbelt.heroku.com/install.sh | sh 
-    - echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
-
-  script:
-    - docker tag sboomi/square-master-test registry.heroku.com/$HEROKU_APP_NAME/web
-
   deploy:
-    provider: script
-    script: 
-      heroku container:push web --app $HEROKU_APP_NAME 
-      heroku container:release web --app $HEROKU_APP_NAME
-    on:
-      branch: master
+    provider: heroku
+    api_key:
+      secure: "4fc5500e-1246-4e72-abc0-0fd959416900"
+    app: square-master-test
+  
+  # language: python
+  
+  # services:
+  #   - docker
+  
+  # before_install:
+  #   - echo 'test'
+  #   - wget -q0- https://toolbelt.heroku.com/install.sh | sh 
+  #   - echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
+
+  # script:
+  #   - docker tag sboomi/square-master-test registry.heroku.com/$HEROKU_APP_NAME/web
+
+  # deploy:
+  #   provider: script
+  #   script: 
+  #     heroku container:push web --app $HEROKU_APP_NAME 
+  #     heroku container:release web --app $HEROKU_APP_NAME
+  #   on:
+  #     branch: master
